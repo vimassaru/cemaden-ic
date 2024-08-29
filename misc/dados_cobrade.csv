@@ -1,0 +1,66 @@
+COBRADE,DESCRIÇÃO
+11110,Tremor de terra
+11120,Tsunami
+11200,Emanação vulcânica
+11311,Queda de blocos
+11312,Queda de lascas
+11313,Queda de matacães
+11314,Queda de lajes
+11321,Deslizamento de solo/rocha
+11331,Deslizamento de solo/lama
+11332,Corrida de rocha/detrito
+11340,Erosão por subsidência
+11410,Erosão costeira
+11420,Erosão margem fluvial
+11431,Erosão continental laminar
+11432,Erosão continental ravinas
+11433,Erosão continental boçorocas
+12100,Inundação
+12200,Enxurrada
+12300,Alagamento
+13111,Ventos costeiros
+13112,Marés de tempestade
+13120,Frente fria
+13211,Tornados
+13212,Tempestade de raios
+13213,Granizo
+13214,Chuvas intensas
+13215,Vendaval
+13310,Onda de calor
+13321,Friagem
+13322,Geadas
+14110,Estiagem
+14120,Seca
+14131,Incêndio florestal em APP
+14132,Incêndio florestal em áreas não protegidas
+14140,Baixa umidade do ar
+15110,Doenças infecciosas virais
+15120,Doenças infecciosas bacterianas
+15130,Doenças infecciosas parasíticas
+15140,Doenças infecciosas fúngicas
+15210,Infestações de animais
+15221,Marés vermelhas
+15222,Cianobactérias em reservatórios
+15230,Outras infestações
+21110,Queda de satélite
+21210,Fonte radioativa
+21310,Radionuclídeos
+22110,Explosão ou incêndio
+22210,Exposição do sistema de água potável
+22220,"Contaminação lacuste,fluvial,marinho"
+22310,Consequência de ação militar
+22410,Transporte rodoviário produtos perigosos
+22420,Transporte ferroviário produtos perigosos
+22430,Transporte aério produtos perigosos
+22440,Transporte dutoviário produtos perigosos
+22450,Transporte maritmo produtos perigosos
+22460,Transporte aquaviário produtos perigosos
+23110,Incêndio em parques e depósitos
+23120,Incêndio em aglomerados industriais
+24100,Colapso de edificações
+24200,Rompimento de barragens
+25100,Transporte rodoviário pessoas ou carga 
+25200,Transpote ferroviário pessoas ou carga 
+25300,Trsnporte aério pessoas ou carga 
+25400,Transporte marítimo pessoas ou carga 
+25500,Tranporte aquaviário pessoas ou carga 

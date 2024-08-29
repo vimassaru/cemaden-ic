@@ -1,0 +1,15 @@
+<!-- formulario_sucesso.html -->
+ {% extends 'website/base.html' %}
+{% block title %}Formulário{% endblock %}
+{% block content %}
+  <section class="section">
+    <div class="container">
+        <div class="notification is-success">
+            <button class="delete"></button>
+            <h1 class="title">Formulário Enviado com Sucesso!</h1>
+            <p class="subtitle">Obrigado por enviar o formulário. Seus dados foram salvos com sucesso.</p>
+            <a class="button is-primary" href="{% url 'school_form' %}">Voltar ao Formulário</a>
+        </div>
+    </div>
+  </section>
+{% endblock %}

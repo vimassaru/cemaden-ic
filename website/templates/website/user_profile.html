@@ -1,0 +1,6 @@
+{% extends 'website/base.html' %}
+{% block title %}User Profile{% endblock %}
+{% block content %}
+<h1 class="title">User Profile</h1>
+<p>Welcome, {{ request.user.username }}!</p>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'website/base.html' %}
+{% block title %}Form{% endblock %}
+{% block content %}
+<h1 class="title">Form</h1>
+<form method="post">
+    {% csrf_token %}
+    <!-- Your form fields here -->
+    <div class="control">
+        <button class="button is-primary" type="submit">Submit</button>
+    </div>
+</form>
+{% endblock %}

@@ -1,0 +1,737 @@
+{% extends 'website/base.html' %}
+
+{% block content %}
+<div class="container p-1">
+    <h2 class="title">Dados da Escola</h2>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="container">
+            <div class="field">
+                <label class="label" for="{{ form.school.id_for_label }}">
+                    {{ form.school.label }}
+                </label>
+                {{form.school}}
+                <div class="control">
+                    {% if form.school_name.errors %}
+                        <p class="help is-danger">{{ form.school_name.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.initial_date.id_for_label }}">
+                    {{ form.initial_date.label }}
+                </label>
+                <div class="control">
+                    {{ form.initial_date }}
+                    {% if form.initial_date.errors %}
+                        <p class="help is-danger">{{ form.initial_date.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Adicione os outros campos do mesmo jeito -->
+        <div class="container  p-1">
+
+            <h2 class="title">DIMENSÕES DO IMPACTO - DANOS HUMANOS</h2>
+            <h4 class="title">Dados COBRADE</h4>
+            
+            <div class="field">
+                <label class="label" for="{{ form.cobrade_id.id_for_label }}">
+                    {{ form.cobrade_id.label }}
+                </label>
+                {{form.cobrade_id}}
+                <div class="control">
+                    {% if form.cobrade_id.errors %}
+                        <p class="help is-danger">{{ form.cobrade_id.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.cobrade_detail.id_for_label }}">
+                    {{ form.cobrade_detail.label }}
+                </label>
+                {{form.cobrade_detail}}
+                <div class="control">
+                    {% if form.cobrade_detail.errors %}
+                        <p class="help is-danger">{{ form.cobrade_detail.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label" for="{{ form.id_fide.id_for_label }}">
+                    {{ form.id_fide.label }}
+                </label>
+                {{form.id_fide}}
+                <div class="control">
+                    {% if form.id_fide.errors %}
+                        <p class="help is-danger">{{ form.id_fide.errors }}</p>
+                    {% endif %}
+                </div>
+                <div class="body"> 
+                    <div class="card has-background-info has-text-white m-1">
+                        <div class="card-content">
+                            <div class="content">
+                            <h3>Para saber o ID FIDE, siga os passos:</h3>
+                            <ol>
+                                <li>
+                                    <span>
+                                        Acesse a página:
+                                        <a target="_blank" href='https://s2id.mi.gov.br/'>
+                                            Sistema integrado de informações sobre desastres da defesa civil nacional
+                                        </a>
+                                    </span>
+                                </li>
+                                <li>
+                                    Selecione a opção Relatórios e depois "Relatório Gerencial - Danos informados"
+                                </li>
+                                <li>
+                                    Faça a consulta selecionando o periodo em que
+                                     aconteceu o desastre, a tipologia e o estado.
+                                </li>
+                                <li>
+                                    Clique no botão exportar do formato de sua preferência.
+                                </li>
+                            </ol>
+                            </div>
+                        </div>
+                    </div>
+                                            
+                </div>
+            </div>
+
+            <h4 class="title">Alunos</h4>
+
+            <div class="field">
+                <label class="label" for="{{ form.tipos_danos.id_for_label }}">
+                    {{ form.tipos_danos.label }}
+                </label>
+                {{form.tipos_danos}}
+                <div class="control">
+                    {% if form.tipos_danos.errors %}
+                        <p class="help is-danger">{{ form.tipos_danos.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div id="informacoes_adicionais" class='field' style="display:none;">
+                    <div class="field">
+                        <label class="label" for="{{ form.genero.id_for_label }}">{{ form.genero.label }}</label>
+                        <div class="control">
+                            {{ form.genero }}
+                            {% if form.genero.errors %}
+                                <p class="help is-danger">{{ form.genero.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.raca.id_for_label }}">{{ form.raca.label }}</label>
+                        <div class="control">
+                            {{ form.raca }}
+                            {% if form.raca.errors %}
+                                <p class="help is-danger">{{ form.raca.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.escolaridade.id_for_label }}">{{ form.escolaridade.label }}</label>
+                        <div class="control">
+                            {{ form.escolaridade }}
+                            {% if form.escolaridade.errors %}
+                                <p class="help is-danger">{{ form.escolaridade.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">{{ form.age_range_form.label }}</label>
+                        <div class="control">
+                            {{ form.age_range_form }}
+                            {% if form.age_range_form.errors %}
+                                <p class="help is-danger">{{ form.age_range_form.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_alunos_mortos.id_for_label }}">{{ form.qtd_alunos_mortos.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_alunos_mortos }}
+                            {% if form.qtd_alunos_mortos.errors %}
+                                <p class="help is-danger">{{ form.qtd_alunos_mortos.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_alunos_feridos.id_for_label }}">{{ form.qtd_alunos_feridos.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_alunos_feridos }}
+                            {% if form.qtd_alunos_feridos.errors %}
+                                <p class="help is-danger">{{ form.qtd_alunos_feridos.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_alunos_desalojados.id_for_label }}">{{ form.qtd_alunos_desalojados.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_alunos_desalojados }}
+                            {% if form.qtd_alunos_desalojados.errors %}
+                                <p class="help is-danger">{{ form.qtd_alunos_desalojados.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_alunos_desabrigados.id_for_label }}">{{ form.qtd_alunos_desabrigados.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_alunos_desabrigados }}
+                            {% if form.qtd_alunos_desabrigados.errors %}
+                                <p class="help is-danger">{{ form.qtd_alunos_desabrigados.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_alunos_doentes.id_for_label }}">{{ form.qtd_alunos_doentes.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_alunos_doentes }}
+                            {% if form.qtd_alunos_doentes.errors %}
+                                <p class="help is-danger">{{ form.qtd_alunos_doentes.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_alunos_traumas_psicologicos.id_for_label }}">{{ form.qtd_alunos_traumas_psicologicos.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_alunos_traumas_psicologicos }}
+                            {% if form.qtd_alunos_traumas_psicologicos.errors %}
+                                <p class="help is-danger">{{ form.qtd_alunos_traumas_psicologicos.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+        <div class="container  p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - DANOS HUMANOS 2</h2>
+            <h4 class="title">Servidores</h4>
+
+
+
+            <div class="field">
+                <label class="label" for="{{ form.tipos_danos2.id_for_label }}">
+                    {{ form.tipos_danos2.label }}
+                </label>
+                {{form.tipos_danos2}}
+                <div class="control">
+                    {% if form.tipos_danos2.errors %}
+                        <p class="help is-danger">{{ form.tipos_danos2.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="container">
+
+                <div id="informacoes_adicionais2" class='field' style="display:none;">
+                    <div class="field">
+                        <label class="label" for="{{ form.genero2.id_for_label }}">{{ form.genero2.label }}</label>
+                        <div class="control">
+                            {{ form.genero2 }}
+                            {% if form.genero2.errors %}
+                                <p class="help is-danger">{{ form.genero2.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.raca2.id_for_label }}">{{ form.raca2.label }}</label>
+                        <div class="control">
+                            {{ form.raca2 }}
+                            {% if form.raca2.errors %}
+                                <p class="help is-danger">{{ form.raca2.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.cargo_profissional.id_for_label }}">{{ form.cargo_profissional.label }}</label>
+                        <div class="control">
+                            {{ form.cargo_profissional }}
+                            {% if form.cargo_profissional.errors %}
+                                <p class="help is-danger">{{ form.cargo_profissional.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label">{{ form.age_range_form2.label }}</label>
+                        <div class="control">
+                            {{ form.age_range_form2 }}
+                            {% if form.age_range_form2.errors %}
+                                <p class="help is-danger">{{ form.age_range_form2.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_servidores_mortos.id_for_label }}">{{ form.qtd_servidores_mortos.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_servidores_mortos }}
+                            {% if form.qtd_servidores_mortos.errors %}
+                                <p class="help is-danger">{{ form.qtd_servidores_mortos.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_servidores_feridos.id_for_label }}">{{ form.qtd_servidores_feridos.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_servidores_feridos }}
+                            {% if form.qtd_servidores_feridos.errors %}
+                                <p class="help is-danger">{{ form.qtd_servidores_feridos.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_servidores_desalojados.id_for_label }}">{{ form.qtd_servidores_desalojados.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_servidores_desalojados }}
+                            {% if form.qtd_servidores_desalojados.errors %}
+                                <p class="help is-danger">{{ form.qtd_servidores_desalojados.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_servidores_desabrigados.id_for_label }}">{{ form.qtd_servidores_desabrigados.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_servidores_desabrigados }}
+                            {% if form.qtd_servidores_desabrigados.errors %}
+                                <p class="help is-danger">{{ form.qtd_servidores_desabrigados.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_servidores_doentes.id_for_label }}">{{ form.qtd_servidores_doentes.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_servidores_doentes }}
+                            {% if form.qtd_servidores_doentes.errors %}
+                                <p class="help is-danger">{{ form.qtd_servidores_doentes.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="label" for="{{ form.qtd_servidores_traumas_psicologicos.id_for_label }}">{{ form.qtd_servidores_traumas_psicologicos.label }}</label>
+                        <div class="control">
+                            {{ form.qtd_servidores_traumas_psicologicos }}
+                            {% if form.qtd_servidores_traumas_psicologicos.errors %}
+                                <p class="help is-danger">{{ form.qtd_servidores_traumas_psicologicos.errors }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="container p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - DANOS MATERIAIS 1</h2>
+            <h4 class="title">Terreno</h4>
+            <p class="body">
+                Danos relacionados ao terreno onde se encontra a escola
+            </p>
+
+            <div class="field">
+                <label class="label">{{ form.terreno.label }}</label>
+                <div class="control">
+                    {{ form.terreno }}
+                    {% if form.terreno.errors %}
+                        <p class="help is-danger">{{ form.terreno.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+
+            <div class="field" id="outro_terreno_container" style="display:none;">
+                <label class="label">{{ form.outro_terreno.label }}</label>
+                <div class="control">
+                    {{ form.outro_terreno }}
+                    {% if form.outro_terreno.errors %}
+                        <p class="help is-danger">{{ form.outro_terreno.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - DANOS MATERIAIS 2</h2>
+            <h4 class="title">Infraestrutura: Com relação ao prédio escolar</h4>
+
+            <div class="field">
+                <label class="label">{{ form.infra_fisico.label }}</label>
+                <div class="control">
+                    {{ form.infra_fisico }}
+                    {% if form.infra_fisico.errors %}
+                        <p class="help is-danger">{{ form.infra_fisico.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+
+            <div class="field">
+                <label class="label">{{ form.infra_comodos.label }}</label>
+                <div class="control">
+                    {{ form.infra_comodos }}
+                    {% if form.infra_comodos.errors %}
+                        <p class="help is-danger">{{ form.infra_comodos.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+
+            <div class="field">
+                <label class="label">{{ form.infra_eletrica.label }}</label>
+                <div class="control">
+                    {{ form.infra_eletrica }}
+                    {% if form.infra_eletrica.errors %}
+                        <p class="help is-danger">{{ form.infra_eletrica.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+
+            <div class="field">
+                <label class="label">{{ form.infra_aqueduto_sanamento.label }}</label>
+                <div class="control">
+                    {{ form.infra_aqueduto_sanamento }}
+                    {% if form.infra_aqueduto_sanamento.errors %}
+                        <p class="help is-danger">{{ form.infra_aqueduto_sanamento.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+
+        </div>
+
+        <div class="container p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - DANOS MATERIAIS 3</h2>
+            <h4 class="title">
+                Insumos e Equipamentos: Danos relacionados a perda de equipamentos eletrônicos
+            </h4>
+        
+            <div class="field">
+                <label class="label">{{ form.eq_computador.label }}</label>
+                <div class="control">
+                    {{ form.eq_computador }}
+                    {% if form.eq_computador.errors %}
+                        <p class="help is-danger">{{ form.eq_computador.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+            <div class="field">
+                <label class="label">{{ form.eq_datashow.label }}</label>
+                <div class="control">
+                    {{ form.eq_datashow }}
+                    {% if form.eq_datashow.errors %}
+                        <p class="help is-danger">{{ form.eq_datashow.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+            <div class="field">
+                <label class="label">{{ form.eq_cadeiras.label }}</label>
+                <div class="control">
+                    {{ form.eq_cadeiras }}
+                    {% if form.eq_cadeiras.errors %}
+                        <p class="help is-danger">{{ form.eq_cadeiras.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+            <div class="field">
+                <label class="label">{{ form.eq_mesas.label }}</label>
+                <div class="control">
+                    {{ form.eq_mesas }}
+                    {% if form.eq_mesas.errors %}
+                        <p class="help is-danger">{{ form.eq_mesas.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+            <div class="field">
+                <label class="label">{{ form.eq_ventilador.label }}</label>
+                <div class="control">
+                    {{ form.eq_ventilador }}
+                    {% if form.eq_ventilador.errors %}
+                        <p class="help is-danger">{{ form.eq_ventilador.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+            <div class="field">
+                <label class="label">{{ form.eq_ar_condicionado.label }}</label>
+                <div class="control">
+                    {{ form.eq_ar_condicionado }}
+                    {% if form.eq_ar_condicionado.errors %}
+                        <p class="help is-danger">{{ form.eq_ar_condicionado.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+            <div class="field">
+                <label class="label">{{ form.eq_estantes.label }}</label>
+                <div class="control">
+                    {{ form.eq_estantes }}
+                    {% if form.eq_estantes.errors %}
+                        <p class="help is-danger">{{ form.eq_estantes.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+            <div class="field">
+                <label class="label">{{ form.eq_outros.label }}</label>
+                <div class="control">
+                    {{ form.eq_outros }}
+                    {% if form.eq_outros.errors %}
+                        <p class="help is-danger">{{ form.eq_outros.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        </div>
+
+        <div class="container p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - DANOS MATERIAIS 4</h2>
+            <h4 class="title">
+                Recursos Pedagógicos: Danos relacionados a perda de recursos pedagógicos
+            </h4>
+                    
+            <div class="field">
+                <label class="label">{{ form.livros.label }}</label>
+                <div class="control">
+                    {{ form.livros }}
+                    {% if form.livros.errors %}
+                        <p class="help is-danger">{{ form.livros.errors }}</p>
+                    {% endif %}
+                </div>
+                    
+            <div class="field">
+                <label class="label">{{ form.vidraria.label }}</label>
+                <div class="control">
+                    {{ form.vidraria }}
+                    {% if form.vidraria.errors %}
+                        <p class="help is-danger">{{ form.vidraria.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+                    
+            <div class="field">
+                <label class="label">{{ form.eq_medicacao.label }}</label>
+                <div class="control">
+                    {{ form.eq_medicacao }}
+                    {% if form.eq_medicacao.errors %}
+                        <p class="help is-danger">{{ form.eq_medicacao.errors }}</p>
+                    {% endif %}
+                </div>
+                    
+            <div class="field">
+                <label class="label">{{ form.eq_outros_materiais.label }}</label>
+                <div class="control">
+                    {{ form.eq_outros_materiais }}
+                    {% if form.eq_outros_materiais.errors %}
+                        <p class="help is-danger">{{ form.eq_outros_materiais.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        </div>
+
+        <div class="container p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - DANOS MATERIAIS 5</h2>
+            <h4 class="title">
+                Espaços de Aprendizagem e Convivência: Danos relacionados aos espaços de aprendizagem e convivência
+            </h4>
+
+            <h6 class="title">Espaços de Aprendizagem</h6>
+            <div class="field">
+                <label class="label" for="{{ form.locais_aprendizado.id_for_label }}">
+                    {{ form.locais_aprendizado.label }}
+                </label>
+                {{form.locais_aprendizado}}
+                <div class="control">
+                    {% if form.locais_aprendizado.errors %}
+                        <p class="help is-danger">{{ form.locais_aprendizado.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <h6 class="title">Espaços de Convivência</h6>
+            <div class="field">
+                <label class="label" for="{{ form.locais_convivencia.id_for_label }}">
+                    {{ form.locais_convivencia.label }}
+                </label>
+                {{form.locais_convivencia}}
+                <div class="control">
+                    {% if form.locais_convivencia.errors %}
+                        <p class="help is-danger">{{ form.locais_convivencia.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div class="container p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - PREJUÍZOS</h2>
+            <h4 class="title">
+                Prejuízos causados devido aos danos ocorridos
+            </h4>
+                                
+            <div class="field">
+                <label class="label">{{ form.dias_sem_aula.label }}</label>
+                <div class="control">
+                    {{ form.dias_sem_aula }}
+                    {% if form.dias_sem_aula.errors %}
+                        <p class="help is-danger">{{ form.dias_sem_aula.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="field">
+                <label class="label">{{ form.escola_abrigo.label }}</label>
+                <div class="control">
+                    {{ form.escola_abrigo }}
+                    {% if form.escola_abrigo.errors %}
+                        <p class="help is-danger">{{ form.escola_abrigo.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+        
+        </div>
+
+        <div class="container p-1">
+            <h2 class="title">DIMENSÕES DO IMPACTO - CUSTOS</h2>
+            <h4 class="title">
+                Seção destinada ao cadastro dos custos dos impactos dos danos
+            </h4>
+            
+            <div class="field">
+                <label class="label">{{ form.custo_danos_materiais.label }}</label>
+                <div class="control">
+                    {{ form.custo_danos_materiais }}
+                    {% if form.custo_danos_materiais.errors %}
+                        <p class="help is-danger">{{ form.custo_danos_materiais.errors }}</p>
+                    {% endif %}
+                </div>
+            
+            <div class="field">
+                <label class="label">{{ form.custo_atender_emergencia.label }}</label>
+                <div class="control">
+                    {{ form.custo_atender_emergencia }}
+                    {% if form.custo_atender_emergencia.errors %}
+                        <p class="help is-danger">{{ form.custo_atender_emergencia.errors }}</p>
+                    {% endif %}
+                </div>
+            
+            <div class="field">
+                <label class="label">{{ form.custo_restaurar_normalidade.label }}</label>
+                <div class="control">
+                    {{ form.custo_restaurar_normalidade }}
+                    {% if form.custo_restaurar_normalidade.errors %}
+                        <p class="help is-danger">{{ form.custo_restaurar_normalidade.errors }}</p>
+                    {% endif %}
+                </div>
+            
+            <div class="field">
+                <label class="label">{{ form.custo_reparacao.label }}</label>
+                <div class="control">
+                    {{ form.custo_reparacao }}
+                    {% if form.custo_reparacao.errors %}
+                        <p class="help is-danger">{{ form.custo_reparacao.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+            
+            <div class="field">
+                <label class="label">{{ form.custo_reconstrucao.label }}</label>
+                <div class="control">
+                    {{ form.custo_reconstrucao }}
+                    {% if form.custo_reconstrucao.errors %}
+                        <p class="help is-danger">{{ form.custo_reconstrucao.errors }}</p>
+                    {% endif %}
+                </div>
+            </div>  
+
+        </div>
+
+        <div class="field">
+            <div class="control">
+                <button class="button is-primary" type="submit">Enviar</button>
+            </div>
+        </div>
+    </form>
+    
+</div>
+
+<script>
+    // JavaScript para mostrar/ocultar informações adicionais
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes = document.querySelectorAll('input[name="tipos_danos"]');
+        const informacoesAdicionais = document.getElementById('informacoes_adicionais');
+
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checkedCheckboxes = Array.from(checkboxes).some(cb => cb.checked);
+                informacoesAdicionais.style.display = checkedCheckboxes ? 'block' : 'none';
+            });
+        });
+    });
+
+</script> 
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const checkboxes2 = document.querySelectorAll('input[name="tipos_danos2"]');
+        const informacoesAdicionais2 = document.getElementById('informacoes_adicionais2');
+
+        checkboxes2.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checkedCheckboxes = Array.from(checkboxes2).some(cb => cb.checked);
+                informacoesAdicionais2.style.display = checkedCheckboxes ? 'block' : 'none';
+            });
+        });
+    });
+</script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const terrenoSelect = document.querySelector('select[name="terreno"]');
+        const outroContainer = document.getElementById('outro_terreno_container');
+
+        terrenoSelect.addEventListener('change', function() {
+            if (terrenoSelect.value === 'outro') {
+                outroContainer.style.display = 'block'; // Mostra o campo de texto
+            } else {
+                outroContainer.style.display = 'none'; // Oculta o campo de texto
+            }
+        });
+    });
+</script>
+{% endblock %}
