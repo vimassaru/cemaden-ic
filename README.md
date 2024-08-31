@@ -9,5 +9,6 @@ Projeto tem como objetivo criar uma aplicação web para cadastro e consulta de 
 - Django
 - Python
 - Javascript
+- HTML
 - Bulma CSS Framework
 - SQLite
