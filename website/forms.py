@@ -1,6 +1,27 @@
 # flake8: noqa
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 from django import forms
-from .models import School, Cobrade, SchoolForm as SchoolFormModel
+from .models import School, Cobrade, UserRole, UserProfile, SchoolForm as SchoolFormModel
+
+
+class CustomUserCreationForm(UserCreationForm):
+    email = forms.EmailField(required=True)
+    role = forms.ModelChoiceField(
+        queryset=UserRole.objects.all(), required=True)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'password1', 'password2', 'role')
+
+    def save(self, commit=True):
+        user = super().save(commit=False)
+        if commit:
+            user.save()
+            # Aqui você pode criar o perfil do usuário se necessário
+            UserProfile.objects.create(
+                user=user, role=self.cleaned_data['role'])
+        return user
 
 
 class SchoolForm(forms.ModelForm):

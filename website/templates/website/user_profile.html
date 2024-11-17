@@ -1,6 +1,20 @@
 {% extends 'website/base.html' %}
-{% block title %}User Profile{% endblock %}
+{% block title %}Perfil de Usuário{% endblock %}
 {% block content %}
-<h1 class="title">User Profile</h1>
-<p>Welcome, {{ request.user.username }}!</p>
+<section class="hero is-info">
+  <div class="hero-body">
+    <p class="title">Perfil de Usuário</p>
+    <p class="subtitle">{{ request.user.username }}</p>
+  </div>
+</section>
+
+<!-- Seção de Botões -->
+<section class="section">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-one-third">
+        <a href="{% url 'school_form' %}" class="button is-fullwidth is-primary">Formulário Escolas</a>
+      </div>
+  </div>
+</section>
 {% endblock %}

@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}My Project{% endblock %}</title>
+    <title>{% block title %}Reinventar Escolas{% endblock %}</title>
     <link href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Navbar com links de navegação -->
-    <nav class="navbar" role="navigation" aria-label="main navigation">
+    <nav class="navbar has-background-dark" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-            <a class="navbar-item" href="{% url 'home' %}">
+            <a class="navbar-item has-text-white-ter" href="{% url 'home' %}">
                 Home
             </a>
         </div>
@@ -18,17 +18,19 @@
         <div class="navbar-end">
             {% if user.is_authenticated %}
                 <div class="navbar-item">
-                    <a class="button is-primary" href="{% url 'user_profile' %}">Profile</a>
+                    <a class="button is-primary" href="{% url 'user_profile' %}">Perfil</a>
                 </div>
                 <div class="navbar-item">
-                    <a class="button is-light" href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
+                    <a class="button is-danger" href="{% url 'logout' %}?next={{ request.path }}">Logout</a>
                 </div>
+                {% if request.user.is_staff %}
+                    <div class="navbar-item">
+                        <a class="button is-info" href="{% url 'register' %}">Registrar Novo Usuário</a>
+                    </div>
+                {% endif %}
             {% else %}
                 <div class="navbar-item">
                     <a class="button is-primary" href="{% url 'login' %}">Login</a>
-                </div>
-                <div class="navbar-item">
-                    <a class="button is-light" href="{% url 'register' %}">Register</a>
                 </div>
             {% endif %}
         </div>

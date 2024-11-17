@@ -1,12 +1,76 @@
 {% extends 'website/base.html' %}
-{% block title %}Register{% endblock %}
+{% load form_tags %}  <!-- Carregue suas tags personalizadas -->
+{% block title %}Registrar{% endblock %}
 {% block content %}
-<h1 class="title">Register</h1>
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <div class="control">
-        <button class="button is-primary" type="submit">Register</button>
+<section class="section">
+    <div class="container">
+        <h1 class="title">Registrar</h1>
+        
+        {% if messages %}
+            <div class="notification is-success">
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <form method="post">
+            {% csrf_token %}
+            
+            <div class="field">
+                <label class="label">Nome de Usuário</label>
+                <div class="control">
+                    {{ form.username|add_class:"input" }}
+                </div>
+                {% if form.username.errors %}
+                    <p class="help is-danger">{{ form.username.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">E-mail</label>
+                <div class="control">
+                    {{ form.email|add_class:"input" }}
+                </div>
+                {% if form.email.errors %}
+                    <p class="help is-danger">{{ form.email.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">Senha</label>
+                <div class="control">
+                    {{ form.password1|add_class:"input" }}
+                </div>
+                {% if form.password1.errors %}
+                    <p class="help is-danger">{{ form.password1.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">Confirme a Senha</label>
+                <div class="control">
+                    {{ form.password2|add_class:"input" }}
+                </div>
+                {% if form.password2.errors %}
+                    <p class="help is-danger">{{ form.password2.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="field">
+                <label class="label">Role</label>
+                <div class="control">
+                    {{ form.role|add_class:"input" }}  <!-- Renderiza o campo de role -->
+                </div>
+                {% if form.role.errors %}
+                    <p class="help is-danger">{{ form.role.errors }}</p>
+                {% endif %}
+            </div>
+
+            <div class="control">
+                <button class="button is-primary" type="submit">Registrar</button>
+            </div>
+        </form>
     </div>
-</form>
+</section>
 {% endblock %}

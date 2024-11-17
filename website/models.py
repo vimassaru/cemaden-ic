@@ -5,6 +5,23 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
+class UserRole(models.Model):
+    id = models.AutoField(primary_key=True)
+    role = models.CharField(max_length=50)
+
+    def __str__(self):
+        return f'{self.id} - {self.role}'
+
+
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    role = models.ForeignKey(UserRole, on_delete=models.SET_NULL, null=True)
+    email = models.EmailField(unique=True)
+
+    def __str__(self):
+        return self.user.username
+
+
 class School(models.Model):
     id = models.AutoField(primary_key=True)
     entity_code = models.CharField(max_length=10)

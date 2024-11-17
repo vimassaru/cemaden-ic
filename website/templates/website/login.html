@@ -2,18 +2,28 @@
 {% block title %}Login{% endblock %}
 {% block content %}
 <h1 class="title">Login</h1>
+
+<!-- Exibe mensagens de erro -->
+{% if messages %}
+    <div class="notification is-danger">
+        {% for message in messages %}
+            {{ message }}
+        {% endfor %}
+    </div>
+{% endif %}
+
 <form method="post">
     {% csrf_token %}
     <div class="field">
-        <label class="label">Username</label>
+        <label class="label">Nome de Usuário</label>
         <div class="control">
-            <input class="input" type="text" name="username">
+            <input class="input" type="text" name="username" required>
         </div>
     </div>
     <div class="field">
-        <label class="label">Password</label>
+        <label class="label">Senha</label>
         <div class="control">
-            <input class="input" type="password" name="password">
+            <input class="input" type="password" name="password" required>
         </div>
     </div>
     <div class="control">
