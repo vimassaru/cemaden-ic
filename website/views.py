@@ -77,6 +77,7 @@ def user_profile(request):
     return render(request, 'website/user_profile.html')
 
 
+@login_required
 def school_form_view(request):
 
     if request.method == 'POST':
