@@ -27,13 +27,10 @@ SECRET_KEY = 'django-insecure-g^jip^r#(%gw7n11=6b&$wb35t=@yjaajc#uhyaqn#7p7uj3bf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-DOTENV_FILE = BASE_DIR / '.env'
-PROD_DOTENV_FILE = BASE_DIR / '.env-prod'
 
-if DEBUG:
-    config = dotenv_values(DOTENV_FILE)
-else:
-    config = dotenv_values(PROD_DOTENV_FILE)
+if not DEBUG:
+    from env_prod import config
+
 
 ALLOWED_HOSTS = []
 
