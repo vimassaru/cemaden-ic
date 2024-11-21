@@ -28,10 +28,10 @@ DEBUG = False
 
 
 if not DEBUG:
-    from env_prod import config
+    from .env_prod import config
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['viniciustanaka.pythonanywhere.com']
 
 
 # Application definition
