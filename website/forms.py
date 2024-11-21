@@ -45,7 +45,7 @@ class SchoolForm(forms.ModelForm):
 
     cobrade_detail = forms.CharField(label='Detalhes COBRADE', max_length=255, required=False, widget=forms.TextInput(attrs={
         'class': 'input',
-        'placeholder': 'Digite o detalhe do COBRADE'
+        'placeholder': 'Observações adicionais sobre o evento natural'
     }))
 
     initial_date = forms.DateField(label='Data Inicial', widget=forms.DateInput(attrs={
@@ -58,16 +58,33 @@ class SchoolForm(forms.ModelForm):
         'type': 'date'
     }))
 
+    suggestions = forms.CharField(
+        label='Sugestões e Observações',
+        widget=forms.Textarea(attrs={
+            'class': 'textarea',
+            'placeholder': 'Adicione suas sugestões aqui...',
+            'rows': 5  # Número de linhas visíveis
+        }),
+        required=False  # Campo opcional
+    )
+
     statusForm = forms.CharField(label='Status', required=False, max_length=50, widget=forms.TextInput(attrs={
         'class': 'input',
         'readonly': 'readonly',
         'value': 'Criado'
     }))
 
-    id_fide = forms.CharField(label='ID FIDE (Opcional)', max_length=20, required=False, widget=forms.TextInput(attrs={
-        'class': 'input',
-        'placeholder': 'Exemplo: SP-F-3546405-12200-20160222'
-    }))
+    id_fide = forms.CharField(
+        label='ID FIDE (incluir caso seu município declarou estado de calamidade pública ou situação de emergência)',
+        max_length=20,
+        required=False,
+        widget=forms.TextInput(
+            attrs={
+                'class': 'input',
+                'placeholder': 'Exemplo: SP-F-3546405-12200-20160222'
+            }
+        )
+    )
 
     age_ranges = [
         ('0-3', '0 a 3 anos'),

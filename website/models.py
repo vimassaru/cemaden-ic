@@ -75,6 +75,7 @@ class SchoolForm(models.Model):
     qtd_servidores_doentes = models.CharField(max_length=50, blank=True)
     qtd_servidores_traumas_psicologicos = models.CharField(
         max_length=50, blank=True)
+    suggestions = models.TextField(blank=True, null=True)
     # Repita para os outros campos...
 
     def __str__(self):
