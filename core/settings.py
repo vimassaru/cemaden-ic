@@ -13,10 +13,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 # flake8: noqa
 
 from pathlib import Path
+from dotenv import dotenv_values
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
@@ -26,6 +26,14 @@ SECRET_KEY = 'django-insecure-g^jip^r#(%gw7n11=6b&$wb35t=@yjaajc#uhyaqn#7p7uj3bf
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
+
+DOTENV_FILE = BASE_DIR / '.env'
+PROD_DOTENV_FILE = BASE_DIR / '.env-prod'
+
+if DEBUG:
+    config = dotenv_values(DOTENV_FILE)
+else:
+    config = dotenv_values(PROD_DOTENV_FILE)
 
 ALLOWED_HOSTS = []
 
@@ -78,13 +86,22 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': config['DB_NAME'],
+        'USER': config['DB_USERNAME'],
+        'PASSWORD': config['DB_PASSWORD'],
+        'HOST': config['DB_HOST'],
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
