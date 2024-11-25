@@ -33,6 +33,9 @@ if not DEBUG:
 
 ALLOWED_HOSTS = ['viniciustanaka.pythonanywhere.com']
 
+if DEBUG:
+    ALLOWED_HOSTS.append('*')
+
 
 # Application definition
 

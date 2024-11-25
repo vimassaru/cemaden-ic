@@ -75,7 +75,7 @@ class SchoolForm(forms.ModelForm):
     }))
 
     id_fide = forms.CharField(
-        label='ID FIDE (incluir caso seu município declarou estado de calamidade pública ou situação de emergência)',
+        label='ID FIDE (incluir caso seu município teve reconhecimento de estado de calamidade pública ou situação de emergência)',
         max_length=20,
         required=False,
         widget=forms.TextInput(

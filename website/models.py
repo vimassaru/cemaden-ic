@@ -79,4 +79,4 @@ class SchoolForm(models.Model):
     # Repita para os outros campos...
 
     def __str__(self):
-        return f'Formulário {self.id} - {self.school}'
+        return f'Formulário {self.id} - {self.suggestions}'

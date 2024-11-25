@@ -1,0 +1,40 @@
+{% extends 'website/base.html' %}
+{% block title %}Sugestões{% endblock %}
+{% block content %}
+  <div class="container">
+      <h1 class="title">Sugestões dos Formulários Escolares</h1>
+
+      <form method="post">
+          {% csrf_token %}
+          <button type="submit" class="button is-primary">Baixar Sugestões como CSV</button>
+      </form>
+
+      <table class="table is-striped is-fullwidth">
+          <thead>
+              <tr>
+                  <th>Data de Criação</th>
+                  <th>Usuário</th>
+                  <th>Escola</th>
+                  <th>Sugestão</th>
+              </tr>
+          </thead>
+          <tbody>
+              {% for form in school_forms %}
+              <tr>
+                  <td>{{ form.created_at|date:"d/m/Y" }}</td>
+                  <td>{{ form.user.username }}</td>  <!-- Verifica se o usuário existe -->
+                  <td>{{ form.school }}</td>  <!-- Exibe a escola -->
+                  <td>
+                    {% if form.suggestions %}
+                        {{ form.suggestions }}
+                    {% else %}
+                        -
+                    {% endif %}
+
+                  </td> <!-- Exibe a sugestão -->
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  </div>
+{% endblock %}

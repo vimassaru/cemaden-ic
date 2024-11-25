@@ -4,6 +4,39 @@
 <div class="container p-1">
     <form method="POST">
         {% csrf_token %}
+
+        <div class="card p-4 mb-1">
+            <h2 class="title">DATA</h2>
+            <div class="card-content">
+
+                <div class="field">
+                    <label class="label" for="{{ form.initial_date.id_for_label }}">
+                        {{ form.initial_date.label }}
+                    </label>
+                    <div class="control">
+                        {{ form.initial_date }}
+                        {% if form.initial_date.errors %}
+                            <p class="help is-danger">{{ form.initial_date.errors }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="{{ form.final_date.id_for_label }}">
+                        {{ form.final_date.label }}
+                    </label>
+                    <div class="control">
+                        {{ form.final_date }}
+                        {% if form.final_date.errors %}
+                            <p class="help is-danger">{{ form.final_date.errors }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% comment %} FIM CARD-CONTENT {% endcomment %}
+            </div>
+            {% comment %} FIM CARD {% endcomment %}
+        </div>
         
         <div class="card p-4 mb-1">
             <h2 class="title">DADOS DA ESCOLA</h2>
@@ -20,31 +53,7 @@
                             {% endif %}
                         </div>
                     </div>
-
-                    <div class="field">
-                        <label class="label" for="{{ form.initial_date.id_for_label }}">
-                            {{ form.initial_date.label }}
-                        </label>
-                        <div class="control">
-                            {{ form.initial_date }}
-                            {% if form.initial_date.errors %}
-                                <p class="help is-danger">{{ form.initial_date.errors }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
-
-                    <div class="field">
-                        <label class="label" for="{{ form.final_date.id_for_label }}">
-                            {{ form.final_date.label }}
-                        </label>
-                        <div class="control">
-                            {{ form.final_date }}
-                            {% if form.final_date.errors %}
-                                <p class="help is-danger">{{ form.final_date.errors }}</p>
-                            {% endif %}
-                        </div>
-                    </div>
-
+                    
                 </div>
             </div>
         </div>
@@ -453,7 +462,7 @@
                 </h2>
                 <div class="card-content">
                     <h4 class="title">
-                        Infraestrutura: Com relação ao prédio escolar
+                        Prédio Escolar
                     </h4>
 
                     <div class="field">
@@ -511,7 +520,7 @@
                 </h2>
                 <div class="card-content">
                     <h4 class="title">
-                        Insumos e Equipamentos: Danos relacionados a perda de equipamentos eletrônicos
+                        Insumos e Equipamentos Eletrônicos
                     </h4>
 
                     <div class="field">
@@ -668,7 +677,7 @@
             
                 <div class="card-content">
                     <h4 class="title">
-                        Espaços de Aprendizagem e Convivência: Danos relacionados aos espaços de aprendizagem e convivência
+                        Espaços de Aprendizagem e Convivência
                     </h4>
 
                     <h6 class="title">Espaços de Aprendizagem</h6>
@@ -708,7 +717,7 @@
                 <h2 class="title">DIMENSÕES DO IMPACTO - PREJUÍZOS</h2>
                 <div class="card-content">
                     <h4 class="title">
-                        Prejuízos causados devido aos danos ocorridos
+                        Prejuízos
                     </h4>
 
                     <div class="field">
@@ -743,7 +752,7 @@
                 <h2 class="title">DIMENSÕES DO IMPACTO - CUSTOS</h2>
                 <div class="card-content">
                     <h4 class="title">
-                        Seção destinada ao cadastro dos custos dos impactos dos danos
+                        Custos (em reais)
                     </h4>
                     <div class="field">
                         <label class="label">{{ form.custo_danos_materiais.label }}</label>

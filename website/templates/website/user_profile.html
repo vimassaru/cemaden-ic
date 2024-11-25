@@ -15,6 +15,12 @@
       <div class="column is-one-third">
         <a href="{% url 'school_form' %}" class="button is-fullwidth is-primary">Formulário Escolas</a>
       </div>
+
+      {% if request.user.is_staff or request.user.role == 1 %}  <!-- Verifica se é staff ou tem o papel 1 -->
+      <div class="column is-one-third">
+        <a href="{% url 'suggestion_list' %}" class="button is-fullwidth is-primary">Acessar Sugestões dos Usuários</a>  <!-- Botão visível apenas para staff ou suporte -->
+      </div>
+      {% endif %}
   </div>
 </section>
 {% endblock %}
